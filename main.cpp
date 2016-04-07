@@ -4,6 +4,28 @@
 
 using namespace std;
 
+void insertion_sort_v2(int arr[], int length) {
+    int c = 0;
+    for (int i = 1; i < length; i++) {
+        // a temporary copy of the current element
+        int tmp = arr[i];
+        int j;
+
+        // find the position for insertion
+        for (j = i; j > 0; j--) {
+            c++;
+            if (arr[j - 1] < tmp)
+                break;
+            // shift the sorted part to right
+            arr[j] = arr[j - 1];
+        }
+
+        // insert the current element
+        arr[j] = tmp;
+    }
+    cout << c << endl;
+}
+
 int insertion_sort(int array_to_sort[], int length){
     int v;
     int j;
@@ -12,11 +34,12 @@ int insertion_sort(int array_to_sort[], int length){
     for(int i = 0; i < length; i++){
         v = array_to_sort[i];
         j = i - 1;
+        op_count++;
         while(j >= 0 && array_to_sort[j] > v){
             if (j >= 0){
                 op_count++;
             }
-            array_to_sort[j+1] = array_to_sort[j];
+            array_to_sort[j + 1] = array_to_sort[j];
             j--;
         }
         array_to_sort[j + 1] = v;
@@ -76,10 +99,17 @@ void make_plot(){
     Py_Finalize();
 }
 
-int main(){
+int notmain(){
     time_t t;
     srand(time(&t));
     test_range(0, 10000);
     make_plot();
     return 0;
+}
+
+int main(){
+    int length = 10;
+    int arr[10] = {1,2,3,4,5,6,7,8,8,10};
+    insertion_sort_v2(arr, 10);
+    print_array(arr, 10);
 }
