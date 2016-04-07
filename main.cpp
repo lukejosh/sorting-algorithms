@@ -1,4 +1,6 @@
 #include <iostream>
+#include <fstream>
+#include <python2.7/Python.h>
 
 using namespace std;
 
@@ -43,43 +45,41 @@ void test_operations_fixed_length(int length, int lower, int upper, int iteratio
         int gen_array[length];
         populate_data(gen_array, length, lower, upper);
         total_operations += insertion_sort(gen_array, length);
+        delete(gen_array);
     }
 
-    int expected_operations = length * length / 4.0;
+    int expected_operations = ((length - 1) * (length - 2)) / double(4);
     int actual_operations = double(total_operations) / iterations;
 
     cout << "expected: " << expected_operations  << "\nactual: " << actual_operations << endl;
     cout << "\n% difference: " << double(abs(expected_operations - actual_operations)) / expected_operations * 100;
 }
 
+void test_range(int lower, int upper){
+    ofstream data_file("data.txt");
+
+    for (int length = lower; length < upper; length++){
+            cout << length << " / " << upper << endl;
+        int gen_array[length];
+        populate_data(gen_array, length, 0, length * 2);
+        int data_point[2] = {length, insertion_sort(gen_array, length)};
+        data_file << data_point[0] << " " << data_point[1] << endl;
+    }
+    data_file.close();
+}
+
+void make_plot(){
+    Py_Initialize();
+    PyObject *sys_path = PySys_GetObject("path");
+    PyList_Append(sys_path, PyString_FromString("."));
+    PyRun_SimpleString("import plotter\nplotter.main()\n");
+    Py_Finalize();
+}
+
 int main(){
     time_t t;
     srand(time(&t));
-
-    int length = 100000;
-    int lower = 0;
-    int upper = 1000000;
-    int iterations = 1;
-
-    test_operations_fixed_length(length, lower, upper, iterations);
-
-    return 0;
-}
-
-int actual_main(){
-
-    int length = 5;
-    int unsorted[] = {5, 4, 3, 2, 1};
-
-    cout << "Original Array: ";
-    print_array(unsorted, length);
-
-    insertion_sort(unsorted, length);
-
-
-    cout << "Sorted Array: ";
-    print_array(unsorted, length);
-
-
+    test_range(0, 10000);
+    make_plot();
     return 0;
 }

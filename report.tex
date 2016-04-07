@@ -15,7 +15,7 @@
 \For{$i \leftarrow 1$ \bf{to} $n - 1$}
     \State{$v \leftarrow A[i]$}
     \State{$j \leftarrow i - 1$}
-    \While{$j \geq $ \bf{and} $A[j] > v$}
+    \While{$j \geq 0$ \bf{and} $A[j] > v$}
         \State{$A[j + 1] \leftarrow A[j]$}
         \State{$j \leftarrow j - 1$}
     \EndWhile
@@ -23,4 +23,5 @@
 \EndFor
 \EndFunction
 \end{algorithmic}
+
 \end{document}
