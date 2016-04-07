@@ -3,25 +3,63 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{algorithmicx}
+\usepackage{enumitem}
 
 \title{CAB302 - Assignment 1}
 \author{Luke Josh}
 
 \begin{document}
 \maketitle
+\tableofcontents
+\pagebreak
 
+\section{Introduction}
+\subsection{Background}
+Insertion sort is an algorithm that takes an input of an unsorted (or sorted) list of numbers, and rearranges
+them into asscending order. It belongs to a group of algorithms known as sorting algorithms, but is by far from the best.
+There are a number of more complex algorithms that can work much faster (especially as the size of the array increases),
+however, it is extremely simple, easy to implement, and great as a tool to teach computer science students about algorithms.
+
+The algorithm can be thought of as seperating the array into two subarrays, one that is sorted, and one that isn't. Initially,
+the first element of the array is sorted - as there is nothing to compare it to. The remaining unsorted elements are then itteratively compared
+to the sorted elements, and are placed into the index in which they belong. An implementation of the algorithm is included below:\linebreak
+
+\subsection{Psuedocode}
 \begin{algorithmic}
-\Function{InsertionSort}{$A[0..n-1$}
-\For{$i \leftarrow 1$ \bf{to} $n - 1$}
-    \State{$v \leftarrow A[i]$}
-    \State{$j \leftarrow i - 1$}
-    \While{$j \geq 0$ \bf{and} $A[j] > v$}
-        \State{$A[j + 1] \leftarrow A[j]$}
-        \State{$j \leftarrow j - 1$}
-    \EndWhile
-    \State{$A[j + 1] \leftarrow v$}
-\EndFor
-\EndFunction
+    \Function{InsertionSort}{$A[0..n-1$}
+        \For{$i \leftarrow 1$ \bf{to} $n - 1$}
+            \State{$v \leftarrow A[i]$}
+            \State{$j \leftarrow i - 1$}
+            \While{$j \geq 0$ \bf{and} $A[j] > v$}
+                \State{$A[j + 1] \leftarrow A[j]$}
+                \State{$j \leftarrow j - 1$}
+            \EndWhile
+            \State{$A[j + 1] \leftarrow v$}
+        \EndFor
+    \EndFunction
 \end{algorithmic}
 
+\subsection{Explanation}
+In words, the algorithm can be expressed as follows:
+\begin{enumerate}[itemsep=0mm]
+    \item Take the nth element of the array, call this the subject element
+    \item Compare the nth element with the n-1th element (the element to the left)
+    \item If the element to the left is larger than the subject element, swap the two elements
+    \item Else, if there is no item to the left, or the item to the left is less than the subject element, do nothing, and proceed along the array
+    \item Repeat for all elements of the array
+\end{enumerate}
+
+\subsection{Example}
+This can be observed in a simple example, take the array $A=[1, 3, 4, 2, 0]$ - the algorithm would observed the following steps:
+
+\begin{enumerate}[itemsep=0mm]
+    \item Take the zeroth element, $v=0$, there are no elements to the left, continue
+    \item Take the first element, $v=1$, the element to the left is lower, continue
+    \item ...
+    \item Take the third element, $v=4$, the element to the left is greater, so call the third element, 4, the subject element
+    \item Perform $A[j + 1] \leftarrow A[j]$, which becomes $A[3] \leftarrow A[2]$, thus $A=[1, 3, 4, 4, 0]$
+    \item Repeat this operation along the list, until the item to the left is no longer less than the subject element: $A=[1, \mathbf{3}, 3, 4, 0]$
+    \item Now, as the previous element is not less than the subject element, instead of making the element equal to the one before it ($A[j + 1] \leftarrow A[j]$), we set the element to be the subject element($A[j + 1] \leftarrow      v$), thus, $A=[1, 2, 3, 4, 0]$
+    \item Repeat the process for the last element, which yields $A=[0, 1, 2, 3, 4]$
+\end{enumerate}
 \end{document}
