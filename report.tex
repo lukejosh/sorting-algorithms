@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{algorithmicx}
+
+\title{CAB302 - Assignment 1}
+\author{Luke Josh}
+
+\begin{document}
+\maketitle
+
+\begin{algorithmic}
+\Function{InsertionSort}{$A[0..n-1$}
+\For{$i \leftarrow 1$ \bf{to} $n - 1$}
+    \State{$v \leftarrow A[i]$}
+    \State{$j \leftarrow i - 1$}
+    \While{$j \geq $ \bf{and} $A[j] > v$}
+        \State{$A[j + 1] \leftarrow A[j]$}
+        \State{$j \leftarrow j - 1$}
+    \EndWhile
+    \State{$A[j + 1] \leftarrow v$}
+\EndFor
+\EndFunction
+\end{algorithmic}
+\end{document}
