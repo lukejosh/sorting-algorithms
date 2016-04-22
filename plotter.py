@@ -27,11 +27,13 @@ def make_plot(filename, include_expected=True, include_results=True, func=None, 
         x1, y1 = make_func_xy(len(x), func)
         plt.plot(x1, y1, '2-r', label='theoretical')
 
-    plt.plot(x, y, '.', label='data')
+    if include_results:
+        plt.plot(x, y, '.', label='data')
     plt.legend(loc='upper left')
     plt.xlabel('Size of array')
-    plt.ylabel('Number of operations')
-    plt.title('Average Array Operations Count')
+    yl = 'Time (S)' if 'time' in filename else 'Number of Operations'
+    plt.ylabel(yl)
+    plt.title(title)
     plt.savefig(output)
     plt.clf()
 
