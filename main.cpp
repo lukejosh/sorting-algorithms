@@ -16,9 +16,7 @@ int insertion_sort_op_count(int array_to_sort[], int length){
         op_count++;
 
         while(j >= 0 && array_to_sort[j] > v){
-            if (j >= 0){
-                op_count++;
-            }
+            op_count++;
             array_to_sort[j + 1] = array_to_sort[j];
             j--;
         }
@@ -31,7 +29,9 @@ double insertion_sort_time(int array_to_sort[], int length){
     int v;
     int j;
     clock_t start;
-    double duration;
+    start = clock();
+
+    unsigned long long duration;
 
     for(int i = 0; i < length; i++){
         v = array_to_sort[i];
@@ -45,7 +45,6 @@ double insertion_sort_time(int array_to_sort[], int length){
         }
         array_to_sort[j + 1] = v;
     }
-    cout << (clock() - start) / (double) CLOCKS_PER_SEC << endl;
     return (clock() - start) / (double) CLOCKS_PER_SEC;
 }
 
@@ -69,6 +68,12 @@ void populate_sorted_data(int empty[], int length, int lower, int upper){
     }
 }
 
+void populate_reverse_sorted_data(int empty[], int length, int lower, int upper){
+    for (int i = 0; i < length; i++){
+        empty[i] = upper - i;
+    }
+}
+
 void write_data_points_to_file(string filename, double data_points[][2], int num_points){
     ofstream file(filename);
 
@@ -80,27 +85,24 @@ void write_data_points_to_file(string filename, double data_points[][2], int num
 
 }
 
-void test_range_op_count(int lower, int upper, int iterations){
-    int op_count;
-
-    double data_points [upper - lower][2];
-    for (int length = lower; length < upper; length++){
+void test_range_operations(string filename, int lower, int upper, int iterations, void (*genFunction)(int[], int, int, int)){
+    double operations;
+    double data_points[upper - lower][2];
+    for (int length = lower; length <= upper; length++){
         cout << length << " / " << upper << endl;
-        op_count = 0;
+        operations = 0;
         for(int repeat = 0; repeat < iterations; repeat++) {
             int gen_array[length];
-            populate_random_data(gen_array, length, 0, length * 2);
-            op_count += insertion_sort_op_count(gen_array, length);
+            genFunction(gen_array, length, 0, upper * 2);
+            operations += insertion_sort_op_count(gen_array, length);
         }
-
-//        data_points[length][0] = length;
-//        data_points[length][1] = op_count / (double)iterations;
+        data_points[length - lower][0] = length;
+        data_points[length - lower][1] = operations / (double) iterations;
     }
-
-//    write_data_points_to_file("operation_count.txt", data_points, upper - lower);
+    write_data_points_to_file(filename, data_points, upper - lower);
 }
 
-void test_range_time(int lower, int upper, int iterations, void (*genFunction)(int[], int, int, int)){
+void test_range_time(string filename, int lower, int upper, int iterations, void (*genFunction)(int[], int, int, int)){
     double time;
     double data_points[upper - lower][2];
     for (int length = lower; length <= upper; length++){
@@ -108,30 +110,19 @@ void test_range_time(int lower, int upper, int iterations, void (*genFunction)(i
         time = 0;
         for(int repeat = 0; repeat < iterations; repeat++) {
             int gen_array[length];
-            populate_random_data(gen_array, length, 0, upper * 2);
+            genFunction(gen_array, length, 0, upper * 2);
             time += insertion_sort_time(gen_array, length);
         }
         data_points[length - lower][0] = length;
         data_points[length - lower][1] = time / (double) iterations;
     }
-    write_data_points_to_file("timer.txt", data_points, upper - lower);
-}
-
-void test_operations(int lower, int upper, int iterations){
-
+    write_data_points_to_file(filename, data_points, upper - lower);
 }
 
 int main(){
-    int arr[5];
-    //populate_random_data(arr, 5, 1, 10);
-    //print_array(arr, 5);
-    test_range_time(500, 600, 5, &populate_random_data);
-}
+    //Test number of operations for sorted arrays
+    test_range_operations("sorted_array_op_count.txt", 2, 1000, 10, &populate_sorted_data);
 
-int maint(){
-    int length = 10;
-    int arr[10] = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
-    int op_count = insertion_sort_op_count(arr, 10);
-    cout << "OP COUNT: " << op_count << endl;
-    print_array(arr, 10);
+    //Test number of operations for sorted arrays
+    test_range_operations("reverse_sorted_array_op_count.txt", 2, 1000, 10, &populate_reverse_sorted_data);
 }

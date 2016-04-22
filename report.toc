@@ -8,10 +8,15 @@
 \contentsline {subsection}{\numberline {2.3}Worst Case}{3}
 \contentsline {subsection}{\numberline {2.4}Average Case}{4}
 \contentsline {section}{\numberline {3}Methodology, Tools and Techniques}{4}
-\contentsline {section}{\numberline {4}Applied Analysis}{5}
+\contentsline {section}{\numberline {4}Experimental Analysis}{5}
 \contentsline {subsection}{\numberline {4.1}Tests}{5}
 \contentsline {subsection}{\numberline {4.2}Number of Operations}{5}
 \contentsline {subsubsection}{\numberline {4.2.1}Best Case}{5}
-\contentsline {section}{\numberline {5}Source Code}{5}
-\contentsline {section}{\numberline {6}Bibliography}{7}
-\contentsline {section}{References}{7}
+\contentsline {subsubsection}{\numberline {4.2.2}Worst Case}{5}
+\contentsline {subsubsection}{\numberline {4.2.3}Average Case}{6}
+\contentsline {section}{\numberline {5}Source Code}{6}
+\contentsline {section}{\numberline {6}Appendices}{9}
+\contentsline {subsection}{\numberline {6.1}Appendix A - Graphs}{9}
+\contentsline {subsection}{\numberline {6.2}Source Code}{11}
+\contentsline {section}{\numberline {7}Bibliography}{11}
+\contentsline {section}{References}{11}

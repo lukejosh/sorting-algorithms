@@ -15,18 +15,19 @@ def make_xy_graphs(data_file):
 
 def make_func_xy(length):
 	x = range(length)
-	y = [(f**2)/4 for f in x]
+	y = [float(f * (f - 1)) / 2 for f in x]
 
 	return x, y
 
 def main():
-	data_file = open("timer.txt")
+	data_file = open("reverse_sorted_array_op_count.txt")
 	x, y = make_xy_graphs(data_file)
-	#x1, y1 = make_func_xy(len(x))
+	x1, y1 = make_func_xy(len(x))
 	plt.plot(x, y, '.', label='data')
-	#plt.plot(x1, y1, '2-r', label='theoretical')
+	plt.plot(x1, y1, '2-r', label='theoretical')
 	plt.legend(loc='upper left')
 	plt.xlabel('Size of array')
 	plt.ylabel('Number of operations')
-	plt.savefig('data_export_{0}.svg'.format(int(time.time())))
-	plt.show()
+	plt.title('Reverse Sorted Array Operations Count')
+	plt.savefig('reverse_sorted_basic_operation_count_data.svg'.format(int(time.time())))
+	#plt.show()
