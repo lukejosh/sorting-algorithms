@@ -18,20 +18,20 @@
 }
 
 \title{CAB302 - Assignment 1}
-\author{Luke Josh}
+\author{Luke Josh   }
 \begin{document}
 \bibliographystyle{apacite}
-\maketitle
+\maketitle\pagebreak
 \tableofcontents
 \pagebreak
 
 \section{Introduction}
     \subsection{Background}
     Insertion sort is an algorithm that takes an input of an unsorted (or sorted) list of numbers, and rearrangesthem into asscending order. It belongs to a group of algorithms known as sorting algorithms, but is by far from the best.There are a number of more complex algorithms that can work much faster (especially as the size of the array increases),however, it is extremely simple, easy to implement, and a great tool to teach computer science students about algorithms and complexity.\\
-    The algorithm can be thought of as seperating the array into two subarrays, one that is sorted, and one that isn't. Traditionaalgorithm begins at theleftmost element - splitting the array into the far left element, and every else to the right. Initially, the first element of tis sorted -as there is nothing to compare it to. The remaining unsorted elements are then itteratively comparedto the sorted elements, and are placed into the index in which they belong. The process is often described as how a human would sort a hand of cards.An implementation of the algorithm is included below:\linebreak
+    The algorithm can be thought of as seperating the array into two subarrays, one that is sorted, and one that isn't. Traditionaalgorithm begins at theleftmost element - splitting the array into the far left element, and every else to the right. Initially, the first element of tis sorted -as there is nothing to compare it to. The remaining unsorted elements are then itteratively comparedto the sorted elements, and are placed into the index in which they belong. The process is often described as how a human would sort a hand of cards.An implementation of the algorithm is included below:\\
 
     \subsection{Semantics of the Algorithm}
-        \begin{algorithmic}
+        \begin{algorithmic}[1]  
             \Function{InsertionSort}{$A[0..n-1]$}
                 \For{$i \leftarrow 1$ \bf{to} $n - 1$}
                     \State{$v \leftarrow A[i]$}
@@ -45,6 +45,7 @@
             \EndFunction
         \end{algorithmic}
 
+    \subsection{Algorithm in words}
         In words, the algorithm can be expressed as follows:
         \begin{enumerate}[itemsep=0mm]
             \item Take the nth element of the array, starting from the 2nd element, call this the subject element
@@ -99,7 +100,7 @@
     \begin{itemize}
         \item Intel Core i7 @ 2.40GHz
         \item 8GB DDR3 Memory @ 1600MHz
-        \item Running Ubuntu 14.(64 bit)
+        \item Running Ubuntu 14.04 (64 bit)
     \end{itemize}
 
     All tests were written in C++, and were compiled using the CLion IDE. Average case tests are performed by generating generating pseudo-random arrays using the c++ rand functions. Graphs that are shown were produced by reading outputs into a Python script using the matplotlib library~\cite{Hunter2007}.
@@ -107,11 +108,11 @@
     This report was typeset and formatted using the \LaTeX\  package.
 
 \section{Experimental Analysis}
-
     \subsection{Tests}
         A number of tests can be applied to the operation on this algorithm to test it's efficiency, and how well it conforms to the theoretical analysis above. This report will detail a count of the number of basic operations performed to sort an array, along with the time taken to sort an array. All referenced figures are included in Appendix A.
-    \subsection{Number of Operations}
 
+    \subsection{Number of Operations}
+        The number of basic operations for the Insertion Sort algorithm is a well defined concept, and can be quantitatively measured and compared to a literature value. The following sections outline results from several tests performed using the included code. Referring to the pseudo code 
         \subsubsection{Best Case}
             Recall from above that the best case running time occurs when an array $A = [a_1, a_2, ..., a_n]$ is already sorted such that $a_n \leq a_{n+1} \forall\ n \in [1, 2, ..., n - 1]$, and that it is expected to run with n - 1 operations. To test this, we can generate arrays that are sorted, and then measure the number of operations required to complete the algorithm. To ensure that the relation is indeed correct, the expected and actual number of basic operations will be calculated for arrays of size 2 through 1000. Two graphs have been produced for this test - one that displays the data that was measured (Figure 1), and another that shows the expected output (Figure 2), these have been included separately to highlight the fact that the two data are exactly the same.
 
@@ -119,10 +120,12 @@
             The worst case for Insertion Sort was said to be an array $A = [a_1, a_2, ..., a_n]$, sorted in reverse order such that $a_n \geq a_{n+1} \forall\ n \in\ [1, 2, ..., n - 1]$. The expected number of operations here was said to be $\frac{n(n - 1)}{2}$. To test this, data is again generated, but this time in descending order. To ensure correctness, it has also been tested on arrays of size 2 through 1000. For this test case, only one image was shown, displaying the expected output and the actual output on the same graph. Barely any distinction is visible between these two lines, indicating that our expected number of operations is indeed correct. The graphs have been included as Figure 3.
 
         \subsubsection{Average Case}
-            The average case for Insertion Sort was said to be an array of numbers, each number being equally likely to be greater than or less than each other number, the expected number of operations was quoted to be $\frac{n^2}{4}$. To test the expected value of basic operations, arrays of varying sizes were generated, with each element being a random number between zero and twice the number of elements. Twice the number of elements was chosen just so that there are less occurrences of duplicate values, and that the array has a greater chance of \"entropy\", and thus, a more accurate \"average\" result. We generate a number of these arrays of each size, just to ensure functional correctness, and to get a better reading of the average case.
+            The average case for Insertion Sort was said to be an array of numbers, each number being equally likely to be greater than or less than each other number, the expected number of operations was quoted to be $\frac{n^2}{4}$. To test the expected value of basic operations, arrays of varying sizes were generated, with each element being a random number between zero and twice the number of elements. Twice the number of elements was chosen just so that there are less occurrences of duplicate values, and that the array has a greater chance of entropy, and thus, a more accurate ``average'' result. We generate a number of these arrays of each size, calculate the number of operations, and take the average - this is to ensure functional correctness, and to get a better reading of the average case. Arrays of size 2 through 1000 were tested, taking an average of 10 generations each time.\\
 
-    \section{Source Code}
-    \lstinputlisting{main.cpp}\newpage
+            A graph has been included as Figure 4 showing the expected and theoretical data for this test. Unlike the previous trials on best and worst case data, these trials will not produce the exact expected value each time, but when averaged, will tend towards the expected value. This can be verified visually, the blue dots representing a measured number of operations for a particularly sized array does not form a seemingly continuous line like the other tests.
+
+    \subsection{Processing Time}
+        The time taken to 
 
 \section{Appendices}
     \subsection{Appendix A - Graphs}
@@ -138,8 +141,16 @@
             \includegraphics[width=\textwidth, height=0.4\textheight]{reverse_sorted_array_basic_operation_count}
             \caption{Number of operations on reversed sorted arrays of size 2 through 1000}
         \end{figure}
+        \begin{figure}[h]
+            \includegraphics[width=\textwidth, height=0.4\textheight]{random_basic_operation_count}
+            \caption{Number of operations on average arrays, for arrays of size 2 through 1000, averaged over 10 trials}
+        \end{figure}
     \FloatBarrier
+
     \subsection{Source Code}
+        \lstinputlisting{main.cpp}\newpage
+
 \section{Bibliography}
     \bibliography{bibliography}
+
 \end{document}

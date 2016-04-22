@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.4.7)  22 APR 2016 21:01
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.4.7)  22 APR 2016 21:38
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -391,33 +391,85 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 24.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (./report.toc)
+) [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./report.toc)
 \tf@toc=\write3
 \openout3 = `report.toc'.
 
-
-[1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 30--32
-\OT1/cmr/m/n/10 al-go-rithm is in-cluded be-low:
- []
-
-
+ [2]
 Underfull \hbox (badness 10000) in paragraph at lines 30--32
 
  []
 
-[2] [3] [4]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 100.
+[3] [4] [5]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 101.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 100.
- [5]
-(./main.cpp
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 101.
+ [6]
+Underfull \hbox (badness 10000) in paragraph at lines 123--124
+
+ []
+
+<sorted_array_basic_operation_count_expected.pdf, id=38, 578.16pt x 433.62pt>
+File: sorted_array_basic_operation_count_expected.pdf Graphic file (type pdf)
+
+<use sorted_array_basic_operation_count_expected.pdf>
+Package pdftex.def Info: sorted_array_basic_operation_count_expected.pdf used o
+n input line 133.
+(pdftex.def)             Requested size: 344.99312pt x 219.99861pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sorted_array_basic_operation_count_data.pdf, id=39, 578.16pt x 433.62pt>
+File: sorted_array_basic_operation_count_data.pdf Graphic file (type pdf)
+
+<use sorted_array_basic_operation_count_data.pdf>
+Package pdftex.def Info: sorted_array_basic_operation_count_data.pdf used on in
+put line 137.
+(pdftex.def)             Requested size: 344.99312pt x 219.99861pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<reverse_sorted_array_basic_operation_count.pdf, id=40, 578.16pt x 433.62pt>
+File: reverse_sorted_array_basic_operation_count.pdf Graphic file (type pdf)
+
+<use reverse_sorted_array_basic_operation_count.pdf>
+Package pdftex.def Info: reverse_sorted_array_basic_operation_count.pdf used on
+ input line 141.
+(pdftex.def)             Requested size: 344.99312pt x 219.99861pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<random_basic_operation_count.pdf, id=41, 578.16pt x 433.62pt>
+File: random_basic_operation_count.pdf Graphic file (type pdf)
+
+<use random_basic_operation_count.pdf>
+Package pdftex.def Info: random_basic_operation_count.pdf used on input line 14
+5.
+(pdftex.def)             Requested size: 344.99312pt x 219.99861pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[7] [8 <./sorted_array_basic_operation_count_expected.pdf> <./sorted_array_basi
+c_operation_count_data.pdf
+
+pdfTeX warning: pdflatex (file ./sorted_array_basic_operation_count_data.pdf): 
+PDF inclusion: multiple pdfs with page group included in a single page
+>] [9 <./reverse_sorted_array_basic_operation_count.pdf> <./random_basic_operat
+ion_count.pdf
+
+pdfTeX warning: pdflatex (file ./random_basic_operation_count.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+>] (./main.cpp
 LaTeX Font Info:    Try loading font information for OML+cmr on input line 1.
  (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
@@ -426,7 +478,10 @@ LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <8> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 1.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 8.
- [6]
+
+[10
+
+]
 Overfull \hbox (27.30824pt too wide) in paragraph at lines 59--60
 [][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -457,7 +512,7 @@ Overfull \hbox (292.51411pt too wide) in paragraph at lines 88--89
 ][][] 
  []
 
-[7]
+
 Overfull \hbox (6.90779pt too wide) in paragraph at lines 97--98
 [][][][][][][][][][][][][][] 
  []
@@ -478,7 +533,7 @@ Overfull \hbox (261.91344pt too wide) in paragraph at lines 105--106
 ][][] 
  []
 
-
+[11]
 Overfull \hbox (1.80768pt too wide) in paragraph at lines 117--118
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -494,47 +549,16 @@ Overfull \hbox (119.11028pt too wide) in paragraph at lines 124--126
  []
 
 
-Overfull \hbox (200.71208pt too wide) in paragraph at lines 127--128
+Overfull \hbox (200.71208pt too wide) in paragraph at lines 127--129
 [][][][][][][][][][][][][][][][][][][][][] 
  []
 
-) [8]
-<sorted_array_basic_operation_count_expected.pdf, id=48, 578.16pt x 433.62pt>
-File: sorted_array_basic_operation_count_expected.pdf Graphic file (type pdf)
 
-<use sorted_array_basic_operation_count_expected.pdf>
-Package pdftex.def Info: sorted_array_basic_operation_count_expected.pdf used o
-n input line 130.
-(pdftex.def)             Requested size: 344.99312pt x 219.99861pt.
+Overfull \hbox (119.11028pt too wide) in paragraph at lines 130--131
+[][][][][][][][][][][][][][][][][][][][][] 
+ []
 
-<sorted_array_basic_operation_count_data.pdf, id=49, 578.16pt x 433.62pt>
-File: sorted_array_basic_operation_count_data.pdf Graphic file (type pdf)
-
-<use sorted_array_basic_operation_count_data.pdf>
-Package pdftex.def Info: sorted_array_basic_operation_count_data.pdf used on in
-put line 134.
-(pdftex.def)             Requested size: 344.99312pt x 219.99861pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<reverse_sorted_array_basic_operation_count.pdf, id=50, 578.16pt x 433.62pt>
-File: reverse_sorted_array_basic_operation_count.pdf Graphic file (type pdf)
-
-<use reverse_sorted_array_basic_operation_count.pdf>
-Package pdftex.def Info: reverse_sorted_array_basic_operation_count.pdf used on
- input line 138.
-(pdftex.def)             Requested size: 344.99312pt x 219.99861pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[9 <./sorted_array_basic_operation_count_expected.pdf>] [10 <./sorted_array_bas
-ic_operation_count_data.pdf> <./reverse_sorted_array_basic_operation_count.pdf
-
-pdfTeX warning: pdflatex (file ./reverse_sorted_array_basic_operation_count.pdf
-): PDF inclusion: multiple pdfs with page group included in a single page
->] (./report.bbl
+) [12] (./report.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 37--53
 []\OT1/cmr/m/n/10 McQuain.  (2000).  \OT1/cmr/m/it/10 Data struc-tures and al-g
 o-rithms.
@@ -546,41 +570,39 @@ Overfull \hbox (92.27425pt too wide) in paragraph at lines 37--53
 tingAnalysis.pdf\OT1/cmr/m/n/10 .
  []
 
-) [11
-
-] (./report.aux) ) 
+) [13] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 7267 strings out of 493304
- 105353 string characters out of 6139872
- 230684 words of memory out of 5000000
+ 7268 strings out of 493304
+ 105500 string characters out of 6139872
+ 235684 words of memory out of 5000000
  10583 multiletter control sequences out of 15000+600000
  13910 words of font info for 53 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 68i,9n,98p,798b,1553s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
-2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/symbols/msam10.pfb>
-Output written on report.pdf (11 pages, 637532 bytes).
+ 68i,9n,98p,915b,1553s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on report.pdf (13 pages, 823238 bytes).
 PDF statistics:
- 151 PDF objects out of 1000 (max. 8388607)
- 106 compressed objects within 2 object streams
+ 169 PDF objects out of 1000 (max. 8388607)
+ 118 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

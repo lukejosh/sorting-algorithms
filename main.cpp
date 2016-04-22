@@ -125,4 +125,7 @@ int main(){
 
     //Test number of operations for sorted arrays
     test_range_operations("reverse_sorted_array_op_count.txt", 2, 1000, 10, &populate_reverse_sorted_data);
+
+    //Test number of operations for random, "average" arrays
+    test_range_operations("random_array_op_count.txt", 2, 1000, 10, &populate_random_data);
 }
