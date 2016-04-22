@@ -120,12 +120,25 @@ void test_range_time(string filename, int lower, int upper, int iterations, void
 }
 
 int main(){
+    //Seed the random number generator with the current time
+    time_t t;
+    srand(time(&t));
+
     //Test number of operations for sorted arrays
     test_range_operations("sorted_array_op_count.txt", 2, 1000, 10, &populate_sorted_data);
 
-    //Test number of operations for sorted arrays
+    //Test number of operations for reverse sorted arrays
     test_range_operations("reverse_sorted_array_op_count.txt", 2, 1000, 10, &populate_reverse_sorted_data);
 
     //Test number of operations for random, "average" arrays
     test_range_operations("random_array_op_count.txt", 2, 1000, 10, &populate_random_data);
+
+    //Test time to run sorted arrays
+    test_range_time("sorted_array_time.txt", 2, 1000, 1000, &populate_sorted_data);
+
+    //Test time for reverse sorted arrays
+    test_range_time("reverse_sorted_array_time.txt", 2, 1000, 1000, &populate_reverse_sorted_data);
+
+    //Test time for random, "average" arrays
+    test_range_time("random_array_time.txt", 2, 1000, 1000, &populate_random_data);
 }

@@ -30,7 +30,7 @@
     Insertion sort is an algorithm that takes an input of an unsorted (or sorted) list of numbers, and rearrangesthem into asscending order. It belongs to a group of algorithms known as sorting algorithms, but is by far from the best.There are a number of more complex algorithms that can work much faster (especially as the size of the array increases),however, it is extremely simple, easy to implement, and a great tool to teach computer science students about algorithms and complexity.\\
     The algorithm can be thought of as seperating the array into two subarrays, one that is sorted, and one that isn't. Traditionaalgorithm begins at theleftmost element - splitting the array into the far left element, and every else to the right. Initially, the first element of tis sorted -as there is nothing to compare it to. The remaining unsorted elements are then itteratively comparedto the sorted elements, and are placed into the index in which they belong. The process is often described as how a human would sort a hand of cards.An implementation of the algorithm is included below:\\
 
-    \subsection{Semantics of the Algorithm}
+    \subsection{Pseudo-code of the Algorithm}
         \begin{algorithmic}[1]  
             \Function{InsertionSort}{$A[0..n-1]$}
                 \For{$i \leftarrow 1$ \bf{to} $n - 1$}
@@ -112,7 +112,7 @@
         A number of tests can be applied to the operation on this algorithm to test it's efficiency, and how well it conforms to the theoretical analysis above. This report will detail a count of the number of basic operations performed to sort an array, along with the time taken to sort an array. All referenced figures are included in Appendix A.
 
     \subsection{Number of Operations}
-        The number of basic operations for the Insertion Sort algorithm is a well defined concept, and can be quantitatively measured and compared to a literature value. The following sections outline results from several tests performed using the included code. Referring to the pseudo code 
+        The number of basic operations for the Insertion Sort algorithm is a well defined concept, and can be quantitatively measured and compared to a literature value. The following sections outline results from several tests performed using the included code. Referring to the pseudo code in Section 1.2, we would initialise at a counter at zero at the start of the algorithm, and increment it
         \subsubsection{Best Case}
             Recall from above that the best case running time occurs when an array $A = [a_1, a_2, ..., a_n]$ is already sorted such that $a_n \leq a_{n+1} \forall\ n \in [1, 2, ..., n - 1]$, and that it is expected to run with n - 1 operations. To test this, we can generate arrays that are sorted, and then measure the number of operations required to complete the algorithm. To ensure that the relation is indeed correct, the expected and actual number of basic operations will be calculated for arrays of size 2 through 1000. Two graphs have been produced for this test - one that displays the data that was measured (Figure 1), and another that shows the expected output (Figure 2), these have been included separately to highlight the fact that the two data are exactly the same.
 
@@ -122,10 +122,17 @@
         \subsubsection{Average Case}
             The average case for Insertion Sort was said to be an array of numbers, each number being equally likely to be greater than or less than each other number, the expected number of operations was quoted to be $\frac{n^2}{4}$. To test the expected value of basic operations, arrays of varying sizes were generated, with each element being a random number between zero and twice the number of elements. Twice the number of elements was chosen just so that there are less occurrences of duplicate values, and that the array has a greater chance of entropy, and thus, a more accurate ``average'' result. We generate a number of these arrays of each size, calculate the number of operations, and take the average - this is to ensure functional correctness, and to get a better reading of the average case. Arrays of size 2 through 1000 were tested, taking an average of 10 generations each time.\\
 
+            To calculate the random value, the \texit{rand()} function can be used, which generates a random number between zero and some (unnecessarily high) predefined integer. To generate a random number in a specified range, we can use the modulo operator to reduce the generated number down to a limit of the desired maximum value, less the minimum value, and then add the minimum value. In c++, this looks like \texit{rand() \% (upper - lower + 1) + lower} - which will generate a value somewhere between \textit{lower} and \textit{upper}.\\
+
             A graph has been included as Figure 4 showing the expected and theoretical data for this test. Unlike the previous trials on best and worst case data, these trials will not produce the exact expected value each time, but when averaged, will tend towards the expected value. This can be verified visually, the blue dots representing a measured number of operations for a particularly sized array does not form a seemingly continuous line like the other tests.
 
     \subsection{Processing Time}
-        The time taken to 
+        The time taken to run the run the algorithm can be simply calculated by the difference between the time at the start of the algorithm, and the time at the end of the algorithm. In c++, this can be done using the \texit{clock()} function. The clock function returns the number of ticks that have elapsed since the program was executed - we can couple this with the CLOCKS_PER_SECOND constant to determine the number of seconds that have elapsed. To find the running time of the algorithm, we find the number of ticks it took the program to run, by subtracting the number of ticks at the start of the program from the number of ticks at the successful completion of the program, divided by the CLOCKS_PER_SECOND constant.\\
+
+        Although no time can be calculated to compare against, it can be known that a computer will be able to very quickly process these algorithms. In fact, the algorithm will process so quickly, that the time measured may not be entirely accurate or useful to look at. To combat this, rather than testing the time it takes for a single array to be sorted, we test the time it takes to sort a large number of arrays of that size, and find the average.
+
+        \subsubsection{Best Case}
+            Like in the operations count, sorted arrays of sizes 2 through 1000 will be generated and sorted. However, to get a better reading, the average will be taken over 100 samples of each size.
 
 \section{Appendices}
     \subsection{Appendix A - Graphs}
