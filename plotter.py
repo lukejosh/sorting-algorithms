@@ -1,5 +1,5 @@
 from matplotlib import pyplot as plt
-from time import time
+import time
 
 def make_xy_graphs(data_file):
 	x = []
@@ -9,7 +9,7 @@ def make_xy_graphs(data_file):
 		l = line.rsplit(' ')
 
 		x.append(int(l[0]))
-		y.append(int(l[1][:-1]))
+		y.append(float(l[1]))
 
 	return x, y
 
@@ -20,11 +20,11 @@ def make_func_xy(length):
 	return x, y
 
 def main():
-	data_file = open("data.txt")
+	data_file = open("timer.txt")
 	x, y = make_xy_graphs(data_file)
-	x1, y1 = make_func_xy(len(x))
+	#x1, y1 = make_func_xy(len(x))
 	plt.plot(x, y, '.', label='data')
-	plt.plot(x1, y1, '2-r', label='theoretical')
+	#plt.plot(x1, y1, '2-r', label='theoretical')
 	plt.legend(loc='upper left')
 	plt.xlabel('Size of array')
 	plt.ylabel('Number of operations')

@@ -1,0 +1,54 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+Hunter%
+}{%
+Hunter%
+}{%
+{\protect \APACyear {2007}}%
+}]{%
+Hunter2007}
+\APACinsertmetastar {%
+Hunter2007}%
+\begin{APACrefauthors}%
+Hunter, J\BPBI D.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2007}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Matplotlib: A 2D graphics environment} {Matplotlib: A 2d
+  graphics environment}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Computing In Science and Engineering}{9}{3}{90--95}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+McQuain%
+}{%
+McQuain%
+}{%
+{\protect \APACyear {2000}}%
+}]{%
+McQuain2000}
+\APACinsertmetastar {%
+McQuain2000}%
+\begin{APACrefauthors}%
+McQuain.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2000}{}{}.
+\newblock
+\APACrefbtitle {Data Structures and Algorithms.} {Data structures and
+  algorithms.}
+\newblock
+\APAChowpublished
+  {\url{http://courses.cs.vt.edu/~cs3114/Fall09/wmcquain/Notes/T14.SortingAnalysis.pdf}}.
+\newblock
+\APACaddressPublisher{}{Computer Science at Virginia Tech}.
+\newblock
+\APACrefnote{Online; accessed 15-April-2016}
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}

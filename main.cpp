@@ -1,40 +1,20 @@
 #include <iostream>
 #include <fstream>
-#include <python2.7/Python.h>
+#include <cstdio>
+#include <ctime>
 
 using namespace std;
 
-void insertion_sort_v2(int arr[], int length) {
-    int c = 0;
-    for (int i = 1; i < length; i++) {
-        // a temporary copy of the current element
-        int tmp = arr[i];
-        int j;
-
-        // find the position for insertion
-        for (j = i; j > 0; j--) {
-            c++;
-            if (arr[j - 1] < tmp)
-                break;
-            // shift the sorted part to right
-            arr[j] = arr[j - 1];
-        }
-
-        // insert the current element
-        arr[j] = tmp;
-    }
-    cout << c << endl;
-}
-
-int insertion_sort(int array_to_sort[], int length){
+int insertion_sort_op_count(int array_to_sort[], int length){
     int v;
     int j;
     int op_count = 0;
 
-    for(int i = 0; i < length; i++){
+    for(int i = 1; i < length; i++){
         v = array_to_sort[i];
         j = i - 1;
         op_count++;
+
         while(j >= 0 && array_to_sort[j] > v){
             if (j >= 0){
                 op_count++;
@@ -47,6 +27,28 @@ int insertion_sort(int array_to_sort[], int length){
     return op_count;
 }
 
+double insertion_sort_time(int array_to_sort[], int length){
+    int v;
+    int j;
+    clock_t start;
+    double duration;
+
+    for(int i = 0; i < length; i++){
+        v = array_to_sort[i];
+        j = i - 1;
+
+        while(j >= 0 && array_to_sort[j] > v){
+            if (j >= 0){
+            }
+            array_to_sort[j + 1] = array_to_sort[j];
+            j--;
+        }
+        array_to_sort[j + 1] = v;
+    }
+    cout << (clock() - start) / (double) CLOCKS_PER_SEC << endl;
+    return (clock() - start) / (double) CLOCKS_PER_SEC;
+}
+
 void print_array(int array[], int length){
     cout << "[";
     for (int i = 0; i < length; i++){
@@ -55,61 +57,81 @@ void print_array(int array[], int length){
     cout << "]" << endl;
 }
 
-void populate_data(int empty[], int length, int lower, int upper){
+void populate_random_data(int empty[], int length, int lower, int upper){
     for (int i = 0; i < length; i++){
         empty[i] = rand() % (upper - lower + 1) + lower;
     }
 }
 
-void test_operations_fixed_length(int length, int lower, int upper, int iterations){
-    int total_operations = 0;
-    for (int repeat = 0; repeat < iterations; repeat++){
-
-        int gen_array[length];
-        populate_data(gen_array, length, lower, upper);
-        total_operations += insertion_sort(gen_array, length);
-        delete(gen_array);
+void populate_sorted_data(int empty[], int length, int lower, int upper){
+    for (int i = 0; i < length; i++){
+        empty[i] = i + 1;
     }
-
-    int expected_operations = ((length - 1) * (length - 2)) / double(4);
-    int actual_operations = double(total_operations) / iterations;
-
-    cout << "expected: " << expected_operations  << "\nactual: " << actual_operations << endl;
-    cout << "\n% difference: " << double(abs(expected_operations - actual_operations)) / expected_operations * 100;
 }
 
-void test_range(int lower, int upper){
-    ofstream data_file("data.txt");
+void write_data_points_to_file(string filename, double data_points[][2], int num_points){
+    ofstream file(filename);
 
+    for(int i = 0; i < num_points; i++){
+        file << data_points[i][0] << " " << data_points[i][1] << endl;
+    }
+
+    file.close();
+
+}
+
+void test_range_op_count(int lower, int upper, int iterations){
+    int op_count;
+
+    double data_points [upper - lower][2];
     for (int length = lower; length < upper; length++){
-            cout << length << " / " << upper << endl;
-        int gen_array[length];
-        populate_data(gen_array, length, 0, length * 2);
-        int data_point[2] = {length, insertion_sort(gen_array, length)};
-        data_file << data_point[0] << " " << data_point[1] << endl;
+        cout << length << " / " << upper << endl;
+        op_count = 0;
+        for(int repeat = 0; repeat < iterations; repeat++) {
+            int gen_array[length];
+            populate_random_data(gen_array, length, 0, length * 2);
+            op_count += insertion_sort_op_count(gen_array, length);
+        }
+
+//        data_points[length][0] = length;
+//        data_points[length][1] = op_count / (double)iterations;
     }
-    data_file.close();
+
+//    write_data_points_to_file("operation_count.txt", data_points, upper - lower);
 }
 
-void make_plot(){
-    Py_Initialize();
-    PyObject *sys_path = PySys_GetObject("path");
-    PyList_Append(sys_path, PyString_FromString("."));
-    PyRun_SimpleString("import plotter\nplotter.main()\n");
-    Py_Finalize();
+void test_range_time(int lower, int upper, int iterations, void (*genFunction)(int[], int, int, int)){
+    double time;
+    double data_points[upper - lower][2];
+    for (int length = lower; length <= upper; length++){
+        cout << length << " / " << upper << endl;
+        time = 0;
+        for(int repeat = 0; repeat < iterations; repeat++) {
+            int gen_array[length];
+            populate_random_data(gen_array, length, 0, upper * 2);
+            time += insertion_sort_time(gen_array, length);
+        }
+        data_points[length - lower][0] = length;
+        data_points[length - lower][1] = time / (double) iterations;
+    }
+    write_data_points_to_file("timer.txt", data_points, upper - lower);
 }
 
-int notmain(){
-    time_t t;
-    srand(time(&t));
-    test_range(0, 10000);
-    make_plot();
-    return 0;
+void test_operations(int lower, int upper, int iterations){
+
 }
 
 int main(){
+    int arr[5];
+    //populate_random_data(arr, 5, 1, 10);
+    //print_array(arr, 5);
+    test_range_time(500, 600, 5, &populate_random_data);
+}
+
+int maint(){
     int length = 10;
-    int arr[10] = {1,2,3,4,5,6,7,8,8,10};
-    insertion_sort_v2(arr, 10);
+    int arr[10] = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    int op_count = insertion_sort_op_count(arr, 10);
+    cout << "OP COUNT: " << op_count << endl;
     print_array(arr, 10);
 }

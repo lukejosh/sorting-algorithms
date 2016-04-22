@@ -1,66 +1,129 @@
 \documentclass{article}
-\usepackage{amsmath}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{algorithmicx}
 \usepackage{enumitem}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{apacite}
+
+\lstset{
+	language=C++,
+	backgroundcolor=\color{black!5},
+	basicstyle=\footnotesize,
+}
 
 \title{CAB302 - Assignment 1}
 \author{Luke Josh}
 
 \begin{document}
+\bibliographystyle{apacite}
 \maketitle
 \tableofcontents
 \pagebreak
 
 \section{Introduction}
-\subsection{Background}
-Insertion sort is an algorithm that takes an input of an unsorted (or sorted) list of numbers, and rearranges
-them into asscending order. It belongs to a group of algorithms known as sorting algorithms, but is by far from the best.
-There are a number of more complex algorithms that can work much faster (especially as the size of the array increases),
-however, it is extremely simple, easy to implement, and great as a tool to teach computer science students about algorithms.
+    \subsection{Background}
+        Insertion sort is an algorithm that takes an input of an unsorted (or sorted) list of numbers, and rearranges
+        them into asscending order. It belongs to a group of algorithms known as sorting algorithms, but is by far from the best.
+        There are a number of more complex algorithms that can work much faster (especially as the size of the array increases),
+        however, it is extremely simple, easy to implement, and a great tool to teach computer science students about algorithms and complexity.
 
-The algorithm can be thought of as seperating the array into two subarrays, one that is sorted, and one that isn't. Initially,
-the first element of the array is sorted - as there is nothing to compare it to. The remaining unsorted elements are then itteratively compared
-to the sorted elements, and are placed into the index in which they belong. The process is often described as how a human would normally sort a hand of cards.
-An implementation of the algorithm is included below:\linebreak
+        The algorithm can be thought of as seperating the array into two subarrays, one that is sorted, and one that isn't. Traditionally, the algorithm begins at the
+        leftmost element - splitting the array into the far left element, and every else to the right. Initially, the first element of the array is sorted -
+        as there is nothing to compare it to. The remaining unsorted elements are then itteratively compared
+        to the sorted elements, and are placed into the index in which they belong. The process is often described as how a human would normally sort a hand of cards.
+        An implementation of the algorithm is included below:\linebreak
 
-\subsection{Psuedocode}
-\begin{algorithmic}
-    \Function{InsertionSort}{$A[0..n-1$}
-        \For{$i \leftarrow 1$ \bf{to} $n - 1$}
-            \State{$v \leftarrow A[i]$}
-            \State{$j \leftarrow i - 1$}
-            \While{$j \geq 0$ \bf{and} $A[j] > v$}
-                \State{$A[j + 1] \leftarrow A[j]$}
-                \State{$j \leftarrow j - 1$}
-            \EndWhile
-            \State{$A[j + 1] \leftarrow v$}
-        \EndFor
-    \EndFunction
-\end{algorithmic}
+    \subsection{Semantics of the Algorithm}
+        \begin{algorithmic}
+            \Function{InsertionSort}{$A[0..n-1]$}
+                \For{$i \leftarrow 1$ \bf{to} $n - 1$}
+                    \State{$v \leftarrow A[i]$}
+                    \State{$j \leftarrow i - 1$}
+                    \While{$j \geq 0$ \bf{and} $A[j] > v$}
+                        \State{$A[j + 1] \leftarrow A[j]$}
+                        \State{$j \leftarrow j - 1$}
+                    \EndWhile
+                    \State{$A[j + 1] \leftarrow v$}
+                \EndFor
+            \EndFunction
+        \end{algorithmic}
 
-\subsection{Explanation}
-In words, the algorithm can be expressed as follows:
-\begin{enumerate}[itemsep=0mm]
-    \item Take the nth element of the array, call this the subject element
-    \item Compare the nth element with the n-1th element (the element to the left)
-    \item If the element to the left is larger than the subject element, swap the two elements
-    \item Else, if there is no item to the left, or the item to the left is less than the subject element, do nothing, and proceed along the array
-    \item Repeat for all elements of the array
-\end{enumerate}
+        In words, the algorithm can be expressed as follows:
+        \begin{enumerate}[itemsep=0mm]
+            \item Take the nth element of the array, starting from the 2nd element, call this the subject element
+            \item Compare the nth element with the n-1th element (the element to the left)
+            \item If the element to the left is larger than the subject element, swap the two elements
+            \item Else, if there is no item to the left, or the item to the left is less than the subject element, do nothing, and proceed along the array
+            \item Repeat for all elements of the array
+        \end{enumerate}
 
-\subsection{Example}
-This can be observed in a simple example, take the array $A=[1, 3, 4, 2, 0]$ - the algorithm would observed the following steps:
+    \subsection{An Example}
+        This can be observed in a simple example, take the array $A=[1, 3, 4, 2, 0]$ - the algorithm would observed the following steps:
 
-\begin{enumerate}[itemsep=0mm]
-    \item Take the zeroth element, $v=0$, there are no elements to the left, continue
-    \item Take the first element, $v=1$, the element to the left is lower, continue
-    \item ...
-    \item Take the third element, $v=4$, the element to the left is greater, so call the third element, 4, the subject element
-    \item Perform $A[j + 1] \leftarrow A[j]$, which becomes $A[3] \leftarrow A[2]$, thus $A=[1, 3, 4, 4, 0]$
-    \item Repeat this operation along the list, until the item to the left is no longer less than the subject element: $A=[1, \mathbf{3}, 3, 4, 0]$
-    \item Now, as the previous element is not less than the subject element, instead of making the element equal to the one before it ($A[j + 1] \leftarrow A[j]$), we set the element to be the subject element($A[j + 1] \leftarrow      v$), thus, $A=[1, 2, 3, 4, 0]$
-    \item Repeat the process for the last element, which yields $A=[0, 1, 2, 3, 4]$
-\end{enumerate}
+        \begin{enumerate}[itemsep=0mm]
+            \item Take the Second element, $v=1$, the element to the left is lower, continue
+            \item Take the third element, $v=3$, the element to the left is greater, so call the third element, 4, the subject element
+            \item Perform $A[j + 1] \leftarrow A[j]$, which becomes $A[3] \leftarrow A[2]$, thus $A=[1, 3, 4, 4, 0]$
+            \item Repeat this operation along the list, until the item to the left is no longer less than the subject element: $A=[1, \mathbf{3}, 3, 4, 0]$
+            \item Now, as the previous element is not less than the subject element, instead of making the element equal to the one before it ($A[j + 1] \leftarrow A[j]$), we set the element to be the subject element($A[j + 1] \leftarrow      v$), thus, $A=[1, 2, 3, 4, 0]$
+            \item Repeat the process for the last element, which yields $A=[0, 1, 2, 3, 4]$
+        \end{enumerate}
+
+\section{Theoretical Analysis}
+    \subsection{Basic Operation}
+        To analyse the efficiency of insertion sort, we must define the \textit{basic operation} of the algorithm. The basic operation is said to be the operation which has the most influence on the running time of the algorithm, which can usually be said to be the operation which is performed with the highest frequency. The operation, in this case, is the check $A[j] > v$. This check is performed more than any other in the algorithm.
+    \subsection{Best Case}
+        The best case efficiency for insertion sort is when the array is already sorted. For a sorted array, $A = [a_1, a_2, ..., a_n]$, each element $a_{i} \geq a_{i-1} \forall i \in [2, 3, ... n]$, and thus, each element that is to be sorted will only check against the element to it's left. Therefore, for a sorted array $A$ with $n$ elements, the number of comparisons that must be performed is $c = n - 1$, giving the algorithm a running time of $\Theta(n)$.
+    \subsection{Worst Case}
+        The worse case efficiency for insertion sort is for an array that is sorted in descending order. An array of this fashion will require a check for each value to the left of each value in the array. For example, if we have the array $A=[5, 4, 3, 2, 1]$, for the first value to be checked, $v = 4$, we must check that the value to the left is not greater, so, 1 comparison. For the second value to be checked, $v = 3$, we must check the two values to the left, so 2 comparisons. It continues in this fashion, and we have the number of comparisons, $c = 1 + 2 + 3 + 4$. Extending this to an array $B=[b_1, b_2, b_3, ..., b_n]$, the number of comparisons, c becomes
+
+        \begin{align}
+            & c = 1 + 2 + 3 + ... + (n - 1) \\
+            & c = \sum_{j = 1}^{n - 1} j \\
+            & c = (\sum_{j = 1}^{n} j) - n\\
+            & c = \frac{n(n + 1)}{2} - n \\
+            \therefore{} & c = \frac{n(n - 1)}{2}
+        \end{align}
+
+    \subsection{Average Case}
+        Assuming an array $A = [a_1, a_2, ..., a_n]$ who's values could take any possible permutation of the natural numbers, the \'average case\' number of basic operations can be calculated. In this case, we can assume that since all elements are randomly selected from the set of natural numbers, that each element is equally likely to be greater than or less than each other element, and from that, we can state that for each element, half of the elements to the left will have to be checked before one is found that is larger than it, on average. Thus, we can state that for each element $a_i$ in $A$, approximately $\frac{i}{2}$ comparisons must be made:
+
+        \begin{align}
+            & c = \sum_{j = 1}^{n - 1} \frac{j}{2} \\
+            & c = (\sum_{j = 1}^{n} \frac{j}{2}) - \frac{n}{2}\\
+            & c = \frac{(\sum_{j = 1}^{n} j)}{2} - \frac{n}{2}\\
+            & c = \frac{n(n + 1)}{4} - \frac{n}{2}
+        \end{align}
+
+        The average case efficiency is much more accurately calculated and quoted by McQuain~\cite{McQuain2000}, as $\frac{n^2}{4}$. Both of these values for the average case efficiency give the algorithm a running time of $\Theta(n^2)$.
+
+\section{Methodology, Tools and Techniques}
+    The following sections regarding the tests that were performed to test the algorithm were run on relatively powerful personal computer, with the following specifications:
+    \begin{itemize}
+        \item Intel Core i7 @ 2.40GHz
+        \item 8GB DDR3 Memory @ 1600MHz
+        \item Running Ubuntu 14.(64 bit)
+    \end{itemize}
+
+    All tests were written in C++, and were compiled using the CLion IDE. Average case tests are performed by generating generating pseudo-random arrays using the c++ rand functions. Graphs that are shown were produced by reading outputs into a Python script using the matplotlib library~\cite{Hunter2007}.
+
+    This report was typeset and formatted using the \LaTeX\  package.
+
+\section{Applied Analysis}
+
+    \subsection{Tests}
+        A number of tests can be applied to the operation on this algorithm to test it's efficiency, and how well it conforms to the theoretical analysis above. This report will detail a count of the number of basic operations performed to sort an array, along with the time taken to sort an array.
+    \subsection{Number of Operations}
+
+        \subsubsection{Best Case}
+
+    \section{Source Code}
+    \lstinputlisting{main.cpp}
+
+\section{Bibliography}
+    \bibliography{bibliography}
 \end{document}
